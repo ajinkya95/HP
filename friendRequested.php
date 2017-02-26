@@ -223,7 +223,7 @@ and open the template in the editor.
                          <div class="w3-container w3-center" style="width: 100%; height: 105%; margin:0; padding-left: 2%; margin-top: -12%;">
            
  <div class="w3-container">
-                  <hr>
+                 
                   <?php
                     $suggestedFriend=$suggestions["eid1"];
                     $usersQuery="select * from profile where email_id='$suggestedFriend'";
@@ -232,7 +232,7 @@ and open the template in the editor.
                     $profilePic=$row1["picture"];
             ?>
                   <img src="<?php echo $profilePic ?>" alt="Avatar" class="w3-left imageCircle w3-margin-right" style="width:40%">
-                  <br>
+           
                 </div>
                 
                   <h3><?php echo $suggestions["eid1"] ?></h3>

@@ -13,3 +13,17 @@ and open the template in the editor.
     height: 46px;
     border: 2px
 }
+
+.div_star{
+    background-color: #00bcd4;
+    width:242px;
+    height: 46px;
+    border: 2px
+}
+
+.star:hover{
+    background: url(Images/gstar.png);
+}
+.div_star:hover{
+    background: url(Images/gstar.png);
+}

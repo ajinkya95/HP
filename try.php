@@ -161,7 +161,8 @@ function myFunction(id) {
                       ?>
                                                                      
                      
-                 
+               
+      
   </div>
     
   <button onclick="myFunction('Demo2')" class="w3-btn-block w3-left-align">
@@ -181,7 +182,7 @@ function myFunction(id) {
                                     <label for="<?php echo $squared1[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
-                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner" checked>
+                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner">
                               <label class="w3-validate">Beginner</label></div>
 
                                   <div> <input class="w3-radio" type="radio" name="gender" value="Intermediate">
@@ -200,7 +201,7 @@ function myFunction(id) {
                                                                      
                      
   </div>
-</div>
+
 
         <button onclick="myFunction('Demo3')" class="w3-btn-block w3-left-align">
     Languages
@@ -219,7 +220,7 @@ function myFunction(id) {
                                     <label for="<?php echo $squared2[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
-                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner" checked>
+                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner">
                               <label class="w3-validate">Beginner</label></div>
 
                                   <div> <input class="w3-radio" type="radio" name="gender" value="Intermediate">
@@ -256,7 +257,7 @@ function myFunction(id) {
                                     <label for="<?php echo $squared3[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
-                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner" checked>
+                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner">
                               <label class="w3-validate">Beginner</label></div>
 
                                   <div> <input class="w3-radio" type="radio" name="gender" value="Intermediate">
@@ -295,7 +296,7 @@ function myFunction(id) {
                                     <label for="<?php echo $squared4[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
-                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner" checked>
+                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner">
                               <label class="w3-validate">Beginner</label></div>
 
                                   <div> <input class="w3-radio" type="radio" name="gender" value="Intermediate">
@@ -314,7 +315,7 @@ function myFunction(id) {
                       
         
     </div>
- 
+ </div>
         
         
         
@@ -335,7 +336,7 @@ function myFunction(id) {
                                     <label for="<?php echo $squared5[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
-                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner" checked>
+                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner">
                               <label class="w3-validate">Beginner</label></div>
 
                                   <div> <input class="w3-radio" type="radio" name="gender" value="Intermediate">
