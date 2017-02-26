@@ -118,6 +118,7 @@ and open the template in the editor.
                         $Results=  mysqli_query($con, $reqFriendsQuery);
                         foreach ($Results as $row)
                         {   
+                            //printf($Results);
                       ?>
                       
                      <div class="w3-card-8 w3-dark-grey" style="width:17%; height:180px; margin: 2%; padding: 2%; float: left;">
@@ -148,6 +149,8 @@ and open the template in the editor.
                       ?>
             </div>
                 <!-- Friend requests end here-->
+                
+                <!--Friends Suggestions start here -->
 <!--                <div id="requests" style= "display:box;  padding-bottom: 10%;overflow-y: scroll; width:100%" >-->
              <div style="align-content: center; font-family: Comic Sans; font-size:20px; font-weight: bold; text-align: center;">Let's expand your circle!</div>
             <div id="knowthem" style=" display:box; padding-bottom: 10%;overflow-y: scroll; width:100%; ">
@@ -352,7 +355,7 @@ and open the template in the editor.
                             ?>
                      <!-- End of 2nd column FR -->
             </div>
-             
+             <!--Friends Suggestions ends here -->
              <!--Footer-->
    <?php include('footer.php'); ?>
     <!--Footer ends here-->

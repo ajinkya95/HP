@@ -9,6 +9,9 @@ if($_SESSION['logged_in']!=true)
             {
                 header( "refresh:0; url=login.php" );
             }
+            else 
+            {
+                
 ?>
 <html>
     <head>
@@ -33,11 +36,14 @@ if($_SESSION['logged_in']!=true)
             
             $loggedUser=$_SESSION["loggedUser"];
             $usersQuery="select * from profile where email_id='$loggedUser'";
+            $nameQuery="select * from users where email_id='$loggedUser'";
             $profileResults=  mysqli_query($con, $usersQuery);
+            $nameResults=  mysqli_query($con, $nameQuery);            
             $row = mysqli_fetch_array($profileResults);
+            $nameRow=mysqli_fetch_array($nameResults);;
             $profilePic=$row["picture"];
             ?>
-            <div id="profilename" class="header1"><h4> <?php echo $loggedUser;?></h4></div>
+            <div id="profilename" class="header1"><h4> <?php echo $nameRow["name"];?></h4></div>
             <div  id="profilearea" class="header1" ><a href="profile.php"><img class="imageCircle" src="<?php echo $profilePic; ?>" alt="<?php echo $profilePic; ?>" width="100" height="100"></a></div>
             
             <ul id="nav">
@@ -132,3 +138,6 @@ if($_SESSION['logged_in']!=true)
           <!-- Menubar ends here-->
     </body>
 </html>
+<?php
+            }
+?>

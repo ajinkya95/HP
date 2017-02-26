@@ -1,4 +1,7 @@
 <!doctype html>
+ <?php
+ include_once 'DB_Con.php';
+ ?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,16 +13,94 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
   <script src="js/checkbox.js"></script>
-  
+  <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   
   
   
   
   
   <script>
+//       $('#button').click(function(){
+//     alert("hii");
+// }); 
+/*$(document).ready(function() {
+    $('#button').click(function(e) {
+        e.preventDefault();
+        //alert(array.toString());
+        $.ajax({
+            
+            type:"POST",
+            url:"profile.php",
+            data:{skillsArray:array},
+            success: function(response) {
+                console.log('success',data);
+                //$('#result').html(response);
+            }
+//                error:function(exception){
+//                      alert('Exception:'+exception);
+//                   }
+        });
+        e.preventDefault();
+    });
+});*/
+    var  ownSkills= [];
+    var chooseSkills=0;
+    function getOwnSkillCheckedVal(val,id){
+          
+          //alert("Clicked, new value = " + val);
+          
+          if(document.getElementById(id).checked===true && chooseSkills<15)
+          {
+              ownSkills.push(val);
+              chooseSkills++;
+          }
+          else if(chooseSkills>15 || chooseSkills===15)
+          {
+              alert("you can't choose more than 15 skills");
+//          }
+//          else
+//          {
+              var index=ownSkills.indexOf(val);
+              ownSkills.splice(index,1);
+              chooseSkills--;
+              alert(ownSkills.toString());
+              document.getElementById(id)
+          }
+          
+ }
+    function getSkill()
+    {
+        
+        alert('In getSkill()------'+ownSkills);
+        var jsonString = JSON.stringify(ownSkills);
+
+       
+        $.ajax({
+        type: 'post',
+        //dataType :  'html',
+        url: 'getSkills.php',
+        data: { 'jsonString' : jsonString },
+        //cache:false,
+        success: function(data1) {
+            //$('#result').html(response);
+            //alert('Ajinkya');
+            //console.log('success',data1);
+            //document.location = "getSkills.php";
+            //alert('This is');
+        }
+//        error: function (xmlHttpRequest, textStatus, errorThrown) {
+//         alert(errorThrown);
+//    }
+    });
+    }
+      
+                
+      
+   
 function myFunction(id) {
-    $(".drop").hide();
+    //$(".drop").hide();
     var x = document.getElementById(id);
+    //alert("ID: "+id )
     if (x.className.indexOf("w3-show") === -1) {
         x.className += " w3-show";
     } else { 
@@ -34,11 +115,17 @@ function myFunction(id) {
    
     <div class="superparent" id="left_div">
         <h2>Choose your skills </h2><label style="font-family: cursive">(maximum 15)</label>
- 
+        
 <div class="w3-accordion w3-light-grey">
   <button onclick="myFunction('Demo1')" class="w3-btn-block w3-left-align">
     Everyday skills
   </button>
+    
+    <!-- Start of Choosing skills-->
+    <?php 
+        $ownSkills=array();
+        
+    ?>
   <div id="Demo1" class="w3-accordion-content w3-container">
                                    
                       
@@ -49,17 +136,20 @@ function myFunction(id) {
                       foreach($skills as $item){
                       ?>
                                 <div class="squaredOne">
-                                   <input class="cbox" type="checkbox" value="None" id="<?php echo $squared[$i];?>" name="check" />
-                                    <label for="<?php echo $squared[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
+                                    <form  method="post">
+                                        <input class="cbox" type="checkbox" value="<?php echo $item;?>" id="<?php echo $squared[$i];?>" name="check[]" onclick="try{getOwnSkillCheckedVal(this.value,this.id)}catch(e){alert(e)}"/>
+                                        <label for="<?php echo $squared[$i];?>" value="<?php echo $item;?>" ><font size="3"> <?php echo $item;?>  </font></label>
+                                        
+                                    </form>
                                     <div class="drop w3-card-8 w3-dropdown-content" >
                                     
-                          <div ><input class="w3-radio" type="radio" name="gender" value="Beginner" checked>
+                          <div ><input class="w3-radio" type="radio" name="gender">
                               <label class="w3-validate">Beginner</label></div>
 
-                                  <div> <input class="w3-radio" type="radio" name="gender" value="Intermediate">
+                                  <div> <input class="w3-radio" type="radio" name="gender" ">
                                       <label class="w3-validate">Intermediate</label></div>
 
-                                      <div> <input class="w3-radio" type="radio" name="gender" value="Expert">
+                                      <div> <input class="w3-radio" type="radio" name="gender" >
                                           <label class="w3-validate">Expert</label></div>
                                     </div>
                                     
@@ -73,6 +163,7 @@ function myFunction(id) {
                      
                  
   </div>
+    
   <button onclick="myFunction('Demo2')" class="w3-btn-block w3-left-align">
     Education
   </button>
@@ -86,7 +177,7 @@ function myFunction(id) {
                       foreach($skills1 as $item){
                       ?>
                                 <div class="squaredOne">
-                                    <input class="cbox" type="checkbox" value="None" id="<?php echo $squared1[$i];?>" name="check" />
+                                    <input class="cbox" type="checkbox" value="<?php echo $item;?>" id="<?php echo $squared1[$i];?>" name="check[]" onclick="try{getOwnSkillCheckedVal(this.value,this.id)}catch(e){alert(e)}"/>
                                     <label for="<?php echo $squared1[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
@@ -124,7 +215,7 @@ function myFunction(id) {
                       foreach($skills2 as $item){
                       ?>
                                 <div class="squaredOne">
-                                    <input class="cbox" type="checkbox" value="None" id="<?php echo $squared2[$i];?>" name="check" />
+                                    <input class="cbox" type="checkbox" value="<?php echo $item;?>" id="<?php echo $squared2[$i];?>" name="check[]" onclick="try{getOwnSkillCheckedVal(this.value,this.id)}catch(e){alert(e)}"/>
                                     <label for="<?php echo $squared2[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
@@ -161,7 +252,7 @@ function myFunction(id) {
                       foreach($skills3 as $item){
                       ?>
                                 <div class="squaredOne">
-                                    <input class="cbox" type="checkbox" value="None" id="<?php echo $squared3[$i];?>" name="check" />
+                                    <input class="cbox" type="checkbox" value="<?php echo $item;?>" id="<?php echo $squared3[$i];?>" name="check[]" onclick="try{getOwnSkillCheckedVal(this.value,this.id)}catch(e){alert(e)}"/>
                                     <label for="<?php echo $squared3[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
@@ -200,7 +291,7 @@ function myFunction(id) {
                       foreach($skills4 as $item){
                       ?>
                                 <div class="squaredOne">
-                                    <input class="cbox" type="checkbox" value="None" id="<?php echo $squared4[$i];?>" name="check" />
+                                    <input class="cbox" type="checkbox" value="<?php echo $item;?>" id="<?php echo $squared4[$i];?>" name="check[]" onclick="try{getOwnSkillCheckedVal(this.value,this.id)}catch(e){alert(e)}"/>
                                     <label for="<?php echo $squared4[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
@@ -240,7 +331,7 @@ function myFunction(id) {
                       foreach($skills5 as $item){
                       ?>
                                 <div class="squaredOne">
-                                    <input class="cbox" type="checkbox" value="None" id="<?php echo $squared5[$i];?>" name="check" />
+                                    <input class="cbox" type="checkbox" value="<?php echo $item;?>" id="<?php echo $squared5[$i];?>" name="check[]" onclick="try{getOwnSkillCheckedVal(this.value,this.id)}catch(e){alert(e)}"/>
                                     <label for="<?php echo $squared5[$i];?>"><font size="3"> <?php echo $item;?> </font></label>
                                    <div class="drop w3-card-8 w3-dropdown-content" >
                                     
@@ -264,8 +355,13 @@ function myFunction(id) {
                   
         
     </div>
- 
+ </form>
 </div>
+
+    
+    <!-- End of Choosing skills-->
+    
+    <!--start of selection of skills to be requested to others-->
     
         <div class="superparent" id="right_div" >
           
@@ -503,10 +599,35 @@ function myFunction(id) {
                  
         
     </div>
-            </div>          
+                  
+
+            </div>  
+    <!--End of selection of skills to be requested to others-->
+    
+    
+    
+    
+    <!--<input type="submit" id="submitskill" name="submit" class="btn" style="float:left">-->
+    
+    <button id="button1" type="submit"  onclick="getSkill()">Submit</button>
+
+        <?php  
+if(isset($_POST['submit']))  
+{  
+    $selectedChecks=$_POST['checked'];
+    foreach($selectedChecks as $check)
+    {
+        $checks.=$check.",";
+    }
+    printf($checks);
+    //$query="Insert into users_skills values ('$email','$fname $lname','$password')";
+    //mysqli_query($con, $query);
+    print_r($ownSkills);
+}
+    ?>
     <footer>
         <a href="home.php"><button type="submit" id="submitskill" class="btn" style="float:right">OK</button></a>
-  
+
         <br>
        
         <form>
@@ -523,6 +644,7 @@ function myFunction(id) {
         
    
     <!--</div>-->  
+    
 </body>
 
 </html>

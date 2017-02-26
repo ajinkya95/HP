@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <?php
 include 'DB_Con.php';
 session_start();
@@ -42,7 +44,7 @@ session_start();
                 type:'post'
                 url:'friendsStatus.php',
                 success: 
-                    alert("HII");
+                    alert("Hii");
                 ,
                 error:function(exception){
                     alert('Exception:'+exception);

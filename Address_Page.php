@@ -147,7 +147,7 @@ and open the template in the editor.
            url:"Cities.php",
            data:"cid="+val,
            success: function(data){
-               $("#citiesList").html(data);
+               //$("#citiesList").html(data);
            }
        });
     }

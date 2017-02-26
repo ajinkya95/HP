@@ -1,4 +1,3 @@
-
 <?php
  include_once 'DB_Con.php';
  ?>
@@ -235,15 +234,103 @@ background: #27AE60;
 color: white;
 }
     </style>
+        <script>
+            
+             function validateLoginForm()
+	{
+            
+	
+        var password = document.reg_form.pass.value;
+        var email = document.reg_form.email.value;
+        var cpassword = document.reg_form.cpass.value;
+        var fname = document.reg_form.fname.value;
+        var lname = document.reg_form.lname.value;
+        var phone = document.reg_form.phone.value;
+        var country = document.reg_form.country.value;
+        var states = document.reg_form.states.value;
+        var cities = document.reg_form.cities.value;
+        var street = document.reg_form.street.value;
+        var atpos=email.indexOf("@");
+        var dotpos=email.lastIndexOf(".");
+        var phoneno = /^\d{10}$/; 
+   
+	 if(email==="")
+        {
+            alert("Enter email");
+            return false;
+        }
+        else if(atpos<1|| dotpos<atpos+2 || dotpos+2>=email.length)
+        {
+            alert("Not a valid email");
+            return false;
+        }
+        else if(password==="")
+        {
+            alert ("Enter Password");
+            return false;
+            
+        }
+        else if(cpassword==="")
+        {
+            alert ("Confirm the Password");
+            return false;
+        }
+        else if(cpassword!==password)
+        {
+            alert("Password not matched");
+            return false;
+        }
+        else if ( fname === "" ){
+	alert ("Enter first Name");
+	return false;
+        }
+        else if(lname === "")
+        {
+         alert ("Enter last Name");
+	return false;   
+        }
+        else if(phone === "")
+        {
+         alert ("Enter Phone Name");
+	return false;   
+        }
+        else if(!(/^\d{10}$/.test(val)))  
+        {  
+            alert ("Enter Correct Phone number");
+            return false; 
+        }  
+        else if(country === "")
+        {
+         alert ("Enter Country Name");
+	return false;   
+        }
+        else if(states === "")
+        {
+         alert ("Enter State");
+	return false;   
+        }
+        else if(cities === "")
+        {
+         alert ("Enter City");
+	return false;   
+        }
+        else if(street === "")
+        {
+         alert ("Enter Street Name");
+	return false;   
+        }  
         
-        
+       
 
+}
+</script>
+      
 
 
     </head>
     <body>
         <!-- multistep form -->
-        <form id="msform" method="post" action="RegisterUser.php">
+        <form id="msform" name="reg_form" method="post" onsubmit="return validateLoginForm()" action="RegisterUser.php">
 	<!-- progressbar -->
 	<ul id="progressbar">
 		<li class="active">Account Setup</li>
@@ -255,7 +342,7 @@ color: white;
 	<fieldset>
 		<h2 class="fs-title">Create your account</h2>
 		<h3 class="fs-subtitle">Account details!!</h3>
-                <input type="text" name="email" placeholder="Email" maxlength="50"/>
+                <input type="text" id="email" name="email" placeholder="Email" maxlength="50"/>
                 <input type="password" name="pass" placeholder="Password" maxlength="50"/>
                 <input type="password" name="cpass" placeholder="Confirm Password" maxlength="50"/>
 		<input type="button" name="next1" class="next action-button" value="Next" />
@@ -272,7 +359,8 @@ color: white;
                 <input type="text" name="phone" placeholder="Phone" maxlength="10"/>
                 Upload picture
 		 <input type="file" name="pic" accept="image/*" />
-                 
+                 <div style="margin-left: 40%; margin-top: 1%; margin-bottom:1%;">  <input  onclick= "myStopUpload()" type="submit" name="upload" >
+           </div>
 		
 		<input type="button" name="previous" class="previous action-button" value="Previous" />
 		<input type="button" name="next" class="next action-button" value="Next" />
@@ -322,6 +410,7 @@ color: white;
 	
 	
 </form>
+        
       
   <script>
     function getCountryID(val){
@@ -354,3 +443,4 @@ color: white;
 
     </body>
 </html>
+  

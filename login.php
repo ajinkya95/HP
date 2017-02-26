@@ -80,7 +80,7 @@ if(isset($_SESSION['logged_in']))
         </div>
         
         <div id="left" style="width: 53%; float:left;  margin:10px; background:skyblue; padding:5px;">
-            <img src="Images/Ice Baby.jpg" height="400" width="400">
+            <!--<img src="Images/Ice Baby.jpg" height="400" width="400">-->
         </div>
         
         <div id="right" style="width: 33%; float:left;  margin:10px; padding:5px;">

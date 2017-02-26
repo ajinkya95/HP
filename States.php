@@ -3,6 +3,7 @@ include_once 'DB_Con.php';
 
 if(!empty(($_POST["cid"])))
 {
+    
     $cid=$_POST["cid"];
     $query="select * from states where Country_ID=$cid";
     $results=  mysqli_query($con, $query);

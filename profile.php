@@ -68,8 +68,9 @@ $loggedUser=$_SESSION["loggedUser"];
         
         
         <!--For uploading a profile picture-->
+        <!--http://www.w3schools.com/php/php_file_upload.asp-->
         <?php
-        if(isset($_POST['upload']) && $_FILES['file']['tmp_name']!=NULL){
+        if(isset($_GET['upload']) && $_FILES['file']['tmp_name']!=NULL){
             
         move_uploaded_file($_FILES['file']['tmp_name'], "User_Images/".$_FILES['file']['name']);
         $uploadQuery="UPDATE profile SET picture= 'User_Images/".$_FILES['file']['name']."' WHERE email_id='$loggedUser'";
@@ -135,7 +136,7 @@ class="w3-text w3-tag">Upload your profile picture</span></div>
                     <div style="margin-left: 40%; margin-top: 1%; margin-bottom:1%;">  <input  onclick= "myStopUpload()" type="submit" value="remove" name="remove profile picture">
            </div>
                     
-                    <div style="margin-left: 40%; margin-top: 1%;">   <input  type="file" name="file" ></div>
+                    <div style="margin-left: 40%; margin-top: 1%;">   <input  type="file" name="picFile" ></div>
                         
            <div style="margin-left: 40%; margin-top: 1%; margin-bottom:1%;">  <input  onclick= "myStopUpload()" type="submit" name="upload" >
            </div>
@@ -297,7 +298,7 @@ class="w3-text w3-tag">Upload your profile picture</span></div>
                 }
                 ?>
             </div>
-            <input type="button" class="w3-btn" name="skillUpdate" value="Update Your Skills">
+            <a href="try.php" ><input type="button" class="w3-btn" name="skillUpdate" value="Update Your Skills"></a>
       </section>
       
         <section id="Requirements" class="hidden" >

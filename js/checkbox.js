@@ -15,16 +15,16 @@
 $(document).ready(function(){
 $('.drop').removeClass("squaredOne");
 $('.cbox').click(function(){
-//if(this.checked){
+if(this.checked){
 $('.drop').hide();
-$(this).next().show();
+$(this).next().next().show();
 $('.drop').style.display="inline-block";
 $('.drop').css("z-index","3");
-//}
-//else{
-//$('.drop').hide();
-//$('.drop').css("z-index","0");
-//}
+}
+else{
+$('.drop').hide();
+$('.drop').css("z-index","0");
+}
 });});
 
 
